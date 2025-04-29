@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  tf-serving:
+    image: tensorflow/serving
+    ports:
+      - "8501:8501"  # REST API
+      - "8500:8500"  # gRPC
+    volumes:
+      - ./:/models/news_classifier
+    environment:
+      - MODEL_NAME=news_classifier
